@@ -1,0 +1,17 @@
+alias vi='vim'
+alias prols='cd /etc/puppetlabs/code/environments/production;pwd;echo "";ls'
+alias hils='cd /etc/puppetlabs/code/environments/production/hieradata;pwd;echo "";ls'
+
+function modls (){
+if [ x$1 == 'x' ]; then
+        cd /etc/puppetlabs/code/environments/production/modules
+        pwd
+        echo ""
+        ls
+else
+        cd /etc/puppetlabs/code/environments/production/modules/$1;
+        pwd
+        echo ""
+        ls *
+fi
+}
