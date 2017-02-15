@@ -49,7 +49,7 @@
   /var/log/puppetlabs/  : PE logs folder.
   
   /var/log/puppetlabs/installer : Installation logs
-  /etc/puppetlabs/enterprise/   : Installation-time configs
+  /etc/puppetlabs/enterprise/   : Configs used during installation
   ```
   
 
