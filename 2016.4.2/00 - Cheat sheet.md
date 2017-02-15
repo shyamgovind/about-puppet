@@ -244,7 +244,8 @@ Copying your particular module directory ( with any dependency modules ) _is sam
 ### Miscellaneous :
 
 1. Console URL : <https://master_hostname>
-  a. To reset "admin" user password, run the below command on puppet master :
+
+  - To reset "admin" user password, run the below command on puppet master :
   
   ```
   
