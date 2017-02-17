@@ -134,9 +134,12 @@
   ```
   cat `puppet agent --configprint classfile` | grep -Ev "puppet_enterprise|pe_|default|settings" | sort -u
   
-  # Explanation : The file path returned by env variable "classfile" contains the list of classes. You can ignore all "puppet_enterprise", "pe_", "default" and "settings" classes, they for the running Puppet itself.
+  # Explanation : The file path returned by env variable "classfile" contains the list of classes. 
+  # You can ignore all "puppet_enterprise", "pe_", "default" and "settings" classes, they for the running Puppet itself.
+  # Also, note that the "classfile" is actually a cache of the classes attached to the node during last puppet agent run.
+  # Which basically means if you attach a new class from Console, it won't show up in the "classfile" till a puppet agent run happens on the node.
 
-  OR
+  OR ( easier and most up-to-date way )
   
   Go to the console. Click on the node and "Classes" tab.
 
