@@ -103,6 +103,39 @@ Since we do not want these nodes to act as servers, the "restrict" line is left 
 server codemaster.shyam.net     # this is our NTP server configured previously i.e. 192.168.138.131
 ```
 
+That's it. The node is ready as an NTP client. If you start the _nptd_ service, it will periodically check with the NTP server _codemaster.shyam.net ( 192.168.138.131 )_ to sync time.
+
+You can also use _ntpdate_ to manually sync time with any NTP server.
+
+![ntpdate](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntpdate%20command.png)
+
+**C. Common issues**
+
+- Error 1 : the NTP socket is in use, exiting
+
+If you run the _ntpdate_ command without using -u option and while ntpd is running in the background, you'll see this error. It is because the _ntpd_ service is already using the port. -u makes it use any other port for querying.
+
+![error 1](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20error%201.png)
+
+- Error 2 : no server suitable for synchronization found  ( Server dropped: strata too high )
+
+Now there could be many reasons for this error. First step is to run ``` ntpdate -dv codemaster.shyam.net``` to know the error in more detail. The _"Server dropped: strata too high"_ is very common error. If you look closely you should see the _stratum 16_ entry.
+
+Meaning of strata is best explained [here](http://serverfault.com/questions/277375/ntpdate-d-server-dropped-strata-too-high)
+
+>NTP increases the stratum for each level in the hierarchy - a NTP server pulling time from a "stratum 1" server would advertise itself as "stratum 2" to its clients.
+>
+>A stratum value of "16" is reserved for unsynchronized servers meaning that your internal NTP server at 192.168.92.82 thinks not to have a reliable timesource (i.e. not synchronizing to a higher-level stratum server).
+
+Here's how this error would look like :
+
+![ntp strata error](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20strata%20error.png)
+
+    ** Solution **
+    Since the issue is that your NTP server is not able to reach any other NTP server for syncing its time, all we need to do is make sure the NTP server ( _codemaster.shyam.net_ ) is able to reach another NTP server. Once it's time is synced, the NTP clients connecting to it will be able to sync with it.
+    
+![ntp strata solved](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20strata%20solved.png)
+
 
 
 
