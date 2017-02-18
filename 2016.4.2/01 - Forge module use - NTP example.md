@@ -55,7 +55,7 @@ Get the ipaddress for both Server and Client
 192.168.138.129
 ```
 
-##### Configuring the NTP server
+**A. Configuring the NTP server**
    
 On the machine you want to make as the NTP server, edit the _/etc/ntp.conf_ as follows :
 
@@ -87,6 +87,21 @@ server 3.centos.pool.ntp.org iburst
 That's it. Start the _ntpd_ service to start the NTP server. 
 
 ![NTPd status](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/NTPd%20status.png)
+
+
+**B. Configuring the NTP client**
+
+Now let's do the same for all the NTP client nodes. Assuming we have already installed the _ntp_ and _ntpdate_ package, here's what we would configure in the _/etc/ntp.conf_.
+
+Since we do not want these nodes to act as servers, the "restrict" line is left as it is. We change the "server" lines as follows :
+
+```
+#server 0.centos.pool.ntp.org iburst
+#server 1.centos.pool.ntp.org iburst
+#server 2.centos.pool.ntp.org iburst
+#server 3.centos.pool.ntp.org iburst
+server codemaster.shyam.net     # this is our NTP server configured previously i.e. 192.168.138.131
+```
 
 
 
