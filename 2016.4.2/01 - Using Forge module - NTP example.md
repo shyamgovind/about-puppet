@@ -187,12 +187,12 @@ We have two options here :
     }
     ```
     
-    But the issue with this method is that our code is very basic and doesn't handle all different scenarios. What if you needed a different ntp.conf for certain set of NTP clients ? What if you wanted to handle Solaris servers as well ? May be some AIX servers ? 
+    But the issue with this method is that our code is very basic & inflexible. It also doesn't handle all the different scenarios. What if you needed a different ntp.conf for a certain set of NTP clients ? What if you wanted to handle Solaris servers as well ? Or may be some AIX servers ? 
 
 
    2. Forge to the rescue. 
     
-    Puppet forge as you might know, is a community repository of puppet modules. Let's look at ntp modules available. Searching "ntp" on forge would give us this : https://forge.puppet.com/puppetlabs/ntp . Using a forge module esp. ones like puppetlabs-ntp has a lot of benefits :
+    Puppet forge as you might know, is a community repository of puppet modules. Let's look at ntp modules available there. Searching "ntp" on forge would give us this : https://forge.puppet.com/puppetlabs/ntp. _( Tip : Always use "[puppet supported](https://forge.puppet.com/supported)" modules if available. Next in line are "[puppet approved](https://forge.puppet.com/approved)" modules. )_ Using a forge module esp. ones like puppetlabs-ntp has a lot of benefits :
     
     ![forge ntp](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20forge%20module.png)
 
