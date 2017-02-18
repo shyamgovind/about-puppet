@@ -138,7 +138,7 @@ Here's how this error would look like :
 ![ntp strata solved](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20strata%20solved.png)
 
 
-
+### NTP - the puppet way
 
 
 
