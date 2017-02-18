@@ -147,45 +147,52 @@ So, what we are trying to automate here through puppet is :
 
 We have two options here :
 
-1. Write our own small module something like this :
+   1. Write our own small module something like this :
 
-```
-class setup_ntp 
-( $is_client = true,
-){
+    ```
+    class setup_ntp 
+    ( $is_client = true,
+    ){
 
-# decide if the setup is for NTP client or server
-if $is_client {
-    $source_file = 'puppet:///modules/setup_ntp/ntp.conf.client'  
-        # we'll keep the ntp.conf for an NTP client in files/ folder of the module 
-  }
-  else {
-    $source_file = 'puppet:///modules/setup_ntp/ntp.conf.server'  
-       # ntp.conf.server in files/ folder will have config for an NTP server
-  }
+    # decide if the setup is for NTP client or server
+    if $is_client {
+        $source_file = 'puppet:///modules/setup_ntp/ntp.conf.client'  
+            # we'll keep a ntp.conf.client in files/ folder, to copy to /etc/ntp.conf and configure an NTP client 
+      }
+      else {
+        $source_file = 'puppet:///modules/setup_ntp/ntp.conf.server'  
+           # ntp.conf.server in files/ folder will be copied to /etc/ntp.conf to configure an NTP server.
+      }
 
-# Install ntp package
-package { 'ntp' :
-  ensure => installed,
-}
+    # Install ntp package
+    package { 'ntp' :
+      ensure => installed,
+    }
 
-# Put the right configuration
-file { '/etc/ntp.conf':
-  ensure => file,
-  source => $source_file,
-  require => Package['ntp'],  # requires the package to be installed first, before trying to configure.
-}
+    # Put the right configuration
+    file { '/etc/ntp.conf':
+      ensure => file,
+      source => $source_file,
+      require => Package['ntp'],  # requires the package to be installed first, before trying to configure.
+    }   
 
-# Start service
-service { 'ntpd'
-  ensure => running,
-  enable => true,                     # enable on boot
-  subscribe => File['/etc/ntp.conf'], # instructs puppet to restart service "ntpd" if the file content changes.
-}
+    # Start service and enable on boot
+    service { 'ntpd':
+      ensure => running,
+      enable => true,                     # enable on boot
+      subscribe => File['/etc/ntp.conf'], # instructs puppet to restart service "ntpd" if the file content changes.
+    }
 
 
-}
-```
+    }
+    ```
+    
+    But the issue with this method is that our code is very basic and doesn't handle all different scenarios. What if you needed a different ntp.conf for certain set of NTP clients ? What if you wanted to handle Solaris servers as well ? May be some AIX servers ? 
+
+
+   2. Forge to the rescue. 
+    
+    Puppet forge as you might know, is a community repository of puppet modules. Let's look at ntp modules available.
 
 
 
