@@ -201,7 +201,9 @@ You would notice, it has good documentation on how to use it too. So, let's inst
  
    ![installing module](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/installing%20forge%20ntp.png)
 
-Now, our code is much simpler and would just involve calling the "ntp" class in this module :
+_Note : "installing a module" ensures all the dependencies are taken care of and downloaded along with it. They are all then unzipped into the module path. You can also download the tar.gz file from forge or clone the git repo from Project URL, but they do not take care of the dependencies._
+
+Now, our code is much simpler and would just involve calling the "ntp" class of this module :
 
 ```
 [For NTP clients]
