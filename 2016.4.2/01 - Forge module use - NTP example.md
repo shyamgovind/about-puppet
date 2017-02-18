@@ -86,7 +86,7 @@ server 3.centos.pool.ntp.org iburst
  
 That's it. Start the _ntpd_ service to start the NTP server. 
 
-
+![NTPd status](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/NTPd%20status.png)
 
 
 
