@@ -226,6 +226,8 @@ That's it. You can call this class, like above, from PE console _or_ write it in
 
 _( Don't fret, if you don't know all the ways ! PE console is enough in most cases. Create Node groups for NTP servers and clients. Attach the "ntp" class to them. The "servers" & "restrict" go as parameters to the class "ntp". You just have to copy the rest as values to the parameter in the console, based on what you are configuring. )_
 
+![passing parameters](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/passing%20parameters%20ntp.png)
+
 
 And you are now managing NTP via Puppet ! Congratulations ! :)
 
