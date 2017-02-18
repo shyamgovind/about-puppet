@@ -192,8 +192,40 @@ We have two options here :
 
    2. Forge to the rescue. 
     
-    Puppet forge as you might know, is a community repository of puppet modules. Let's look at ntp modules available.
+    Puppet forge as you might know, is a community repository of puppet modules. Let's look at ntp modules available. Searching "ntp" on forge would give us this : https://forge.puppet.com/puppetlabs/ntp . Using a forge module esp. ones like puppetlabs-ntp has a lot of benefits :
+    
+    ![forge ntp](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20forge%20module.png)
 
 
+You would notice, it has good documentation on how to use it too. So, let's install the module :
+ 
+   ![installing module](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/installing%20forge%20ntp.png)
 
+Now, our code is much simpler and would just involve calling the "ntp" class in this module :
+
+```
+[For NTP clients]
+class { '::ntp':
+  servers => [ 'codemaster.shyam.net'],
+}
+
+
+[For NTP server]
+class { '::ntp':
+  servers   => ['0.centos.pool.ntp.org', '1.centos.pool.ntp.org', '2.centos.pool.ntp.org', '3.centos.pool.ntp.org'],
+  restrict  => [
+    'default nomodify notrap nopeer noquery',
+    '127.0.0.1',
+    '::1',
+    '192.168.138.0 mask 255.255.255.0 nomodify notrap'
+     ],
+}
+```
+
+That's it. You can call this class, like above, from PE console _or_ write it in another class _or_ classify in site.pp to apply globally. Best thing is, unlike our code this works for all the supported platforms - not just RHEL and Ubuntu.
+
+_( Don't fret, if you don't know all the ways ! PE console is enough in most cases. Create Node groups for NTP servers and clients. Attach the "ntp" class to them. The "servers" & "restrict" go as parameters to the class "ntp". You just have to copy the rest as values to the parameter in the console, based on what you are configuring. )_
+
+
+And you are now managing NTP via Puppet ! Congratulations ! :)
 
