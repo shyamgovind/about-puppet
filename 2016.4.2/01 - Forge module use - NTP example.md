@@ -119,7 +119,7 @@ If you run the _ntpdate_ command without using -u option and while ntpd is runni
 
 - Error 2 : no server suitable for synchronization found  ( Server dropped: strata too high )
 
-Now there could be many reasons for this error. First step is to run ``` ntpdate -dv codemaster.shyam.net``` to know the error in more detail. The _"Server dropped: strata too high"_ is very common error. If you look closely you should see the _stratum 16_ entry.
+Now there could be many reasons for this error. First step is to run ``` ntpdate -dv codemaster.shyam.net``` to know the error in more detail. The _"Server dropped: strata too high"_ is very common error. If you look closely you should see the _stratum 16_ entry ( see screenshot of error below ).
 
 Meaning of strata is best explained [here](http://serverfault.com/questions/277375/ntpdate-d-server-dropped-strata-too-high)
 
