@@ -131,8 +131,9 @@ Here's how this error would look like :
 
 ![ntp strata error](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20strata%20error.png)
 
-    ** Solution **
-    Since the issue is that your NTP server is not able to reach any other NTP server for syncing its time, all we need to do is make sure the NTP server ( _codemaster.shyam.net_ ) is able to reach another NTP server. Once it's time is synced, the NTP clients connecting to it will be able to sync with it.
+   **Solution**
+   
+   Since the issue is that your NTP server is not able to reach any other NTP server for syncing its time, all we need to do is make sure the NTP server ( _codemaster.shyam.net_ ) is able to reach another NTP server. Once it's time is synced, the NTP clients connecting to it will be able to sync with it.
     
 ![ntp strata solved](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20strata%20solved.png)
 
