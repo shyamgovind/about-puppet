@@ -7,7 +7,7 @@ _This doc is for a different audience than the quick start guide. It is for some
 
 ### NTP - the manual way
 
-So, let's first setup NTP manually and see what exactly are we automating. If you know manual setup of NTP, you can skip to next section.
+So, let's first setup NTP manually and see what exactly are we automating. If you know manual setup of NTP, you can skip to [next section](#ntp---the-puppet-way).
 
 #### A little about NTP in Linux
 
