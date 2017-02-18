@@ -11,7 +11,7 @@ So, let's first setup NTP manually and see what exactly are we automating. If yo
 
 #### A little about NTP in Linux
 
-So, NTP ( Network Time Protocol ) is way to ensure your machines are in sync w.r.t time. That's all ! 
+So, NTP ( Network Time Protocol ) is way to ensure the clocks of your machines are in sync. That's all ! 
 
 The NTP server listens on port 123 and uses UDP. The NTP clients send requests to NTP server to sync its time with it. The config file used by both NTP server and client is _/etc/ntp.conf_ ( for RedHat and Ubuntu systems ). The NTP service ( called _ntpd_ ) acts as a server and/or a client depending on its configuration.
 
@@ -75,7 +75,7 @@ On the machine you want to make as the NTP server, edit the _/etc/ntp.conf_ as f
 
 ```
 
-Your local NTP server would typically connect to some other external NTP server like below, to keep its time in sync. SO, the ntp.conf would also have some entry like this :
+Your local NTP server would typically connect to some other external NTP server like below, to keep its time in sync. So, the ntp.conf would also have some entry like this :
 
 ```
 server 0.centos.pool.ntp.org iburst
@@ -87,6 +87,10 @@ server 3.centos.pool.ntp.org iburst
 That's it. Start the _ntpd_ service to start the NTP server. 
 
 ![NTPd status](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/NTPd%20status.png)
+
+
+
+
 
 
 
