@@ -1,4 +1,4 @@
-# 2016.4.2 CHEAT SHEET ( for a monolithic install )
+# 2016.4 CHEAT SHEET ( for a monolithic install )
 
 ## Most important tasks
 
