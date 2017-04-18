@@ -140,7 +140,10 @@ Here's how this error would look like :
 
 ### NTP - the puppet way
 
-So, what we are trying to automate here through puppet is :
+Now let's do the same using puppet. Ok, first things first. 
+
+Let's list the things we are trying to automate here :
+
  - install ntp package
  - configure ntp ( server or client ) 
  - run the ntp service in the background.
@@ -151,7 +154,7 @@ We have two options here :
 
     ```
     class setup_ntp 
-    ( $is_client = true,
+    ( $is_client = true,   # because we'll copy a different ntp.conf for client.
     ){
 
     # decide if the setup is for NTP client or server
@@ -185,9 +188,14 @@ We have two options here :
 
 
     }
+    
     ```
     
-    But the issue with this method is that our code is very basic & inflexible. It also doesn't handle all the different scenarios. What if you needed a different ntp.conf for a certain set of NTP clients ? What if you wanted to handle Solaris servers as well ? Or may be some AIX servers ? 
+But the issue with this method is that our code is very basic & inflexible. 
+It also doesn't handle all the different scenarios like :
+    - What if you needed a different ntp.conf for a certain set of NTP clients ? 
+    - What if you wanted to handle Solaris servers as well ? 
+    - Or may be some AIX servers ? 
 
 
    2. Forge to the rescue. 
@@ -224,9 +232,9 @@ class { '::ntp':
 }
 ```
 
-That's it. You can call this class, like above, from PE console _or_ write it in another class _or_ classify in site.pp to apply globally. Best thing is, unlike our code this works for all the supported platforms - not just RHEL and Ubuntu.
+That's it. You can call this class, like above, from PE console _or_ write it in another class _or_ classify in site.pp to apply globally. Best thing is, unlike our code, this works for all the supported platforms - not just RHEL and Ubuntu.
 
-_( Don't fret, if you don't know all the ways ! PE console is enough in most cases. Create Node groups for NTP servers and clients. Attach the "ntp" class to them. The "servers" & "restrict" go as parameters to the class "ntp". You just have to copy the rest as values to the parameter in the console, based on what you are configuring. )_
+_( Don't fret, if you don't know all the ways to classify & attach a class ! PE console is enough in most cases. Create Node groups for NTP servers and clients. Attach the "ntp" class to them. The "servers" & "restrict" go as parameters to the class "ntp". You just have to copy the rest as values to the parameter in the console, based on what you are configuring. )_
 
 ![passing parameters](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/passing%20parameters%20ntp.png)
 
