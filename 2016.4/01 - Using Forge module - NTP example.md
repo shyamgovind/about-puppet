@@ -192,23 +192,19 @@ We have two options here :
  ```
     
 But the issue with this method is that our code is very basic & inflexible. 
-It also doesn't handle all the different scenarios like :
-
- - What if you needed a different ntp.conf for a certain set of NTP clients ? 
- - What if you wanted to handle Solaris servers as well ? 
- - Or may be some AIX servers ? 
+It also doesn't handle all the different scenarios like : What if you needed a different ntp.conf for a certain set of NTP clients ? What if you wanted to handle Solaris servers as well ? Or may be some AIX servers ? 
 
 
    2. Forge to the rescue. 
+
+Puppet forge as you might know, is a community repository of puppet modules. Let's look at ntp modules available there. Searching "ntp" on forge would give us this : https://forge.puppet.com/puppetlabs/ntp. _( Tip : Always use "[puppet supported](https://forge.puppet.com/supported)" modules if available. Next in line are "[puppet approved](https://forge.puppet.com/approved)" modules. )_ Using a forge module esp. ones like puppetlabs-ntp has a lot of benefits :
     
-    Puppet forge as you might know, is a community repository of puppet modules. Let's look at ntp modules available there. Searching "ntp" on forge would give us this : https://forge.puppet.com/puppetlabs/ntp. _( Tip : Always use "[puppet supported](https://forge.puppet.com/supported)" modules if available. Next in line are "[puppet approved](https://forge.puppet.com/approved)" modules. )_ Using a forge module esp. ones like puppetlabs-ntp has a lot of benefits :
-    
-    ![forge ntp](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20forge%20module.png)
+  ![forge ntp](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/ntp%20forge%20module.png)
 
 
 You would notice, it has good documentation on how to use it too. So, let's install the module :
  
-   ![installing module](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/installing%20forge%20ntp.png)
+  ![installing module](https://github.com/shyamgovind/puppet-cheat-sheets/blob/master/img/installing%20forge%20ntp.png)
 
 _Note : "installing a module" ensures all the dependencies are taken care of and downloaded along with it. They are all then unzipped into the module path. You can also download the tar.gz file from forge or clone the git repo from Project URL, but they do not take care of the dependencies._
 
