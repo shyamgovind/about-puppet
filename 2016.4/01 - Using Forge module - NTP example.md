@@ -152,7 +152,7 @@ We have two options here :
 
    1. Write our own small module something like this :
 
-    ```
+```
     class setup_ntp 
     ( $is_client = true,   # because we'll copy a different ntp.conf for client.
     ){
@@ -189,13 +189,14 @@ We have two options here :
 
     }
     
-    ```
+ ```
     
 But the issue with this method is that our code is very basic & inflexible. 
 It also doesn't handle all the different scenarios like :
-    - What if you needed a different ntp.conf for a certain set of NTP clients ? 
-    - What if you wanted to handle Solaris servers as well ? 
-    - Or may be some AIX servers ? 
+
+ - What if you needed a different ntp.conf for a certain set of NTP clients ? 
+ - What if you wanted to handle Solaris servers as well ? 
+ - Or may be some AIX servers ? 
 
 
    2. Forge to the rescue. 
