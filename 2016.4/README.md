@@ -12,12 +12,13 @@ _P.S : Not all components but ones that matter in most cases._
 
 For PE 2016.4 :
 
+Main puppet components -
 - Puppet        : 4.7   ( the main ruby application that does all the magic - Master. )
 - Puppet Server : 2.6   ( the web server that hosts the above ruby app. A spin-off of Jetty web server ) 
 - Puppet agent  : 1.7   ( the application that acts as an agent )
 - Puppet DB     : 4.2   ( Database for puppet. A spin-off of Postgres. )
  
-Others : 
+Others -
  
 - Facter        : 3.4   ( a separate tool to collect and use system info. )
 - Hiera         : 3.2   ( a tool to access and use data from text files. )
